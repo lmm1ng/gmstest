@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
-import { setDataAsync } from "../actions/table";
-import TableComp from '../components/Table/Table'
+import { setDataAsync, setSort, setData } from "../actions/table";
+import { getSortedData } from "../selectors/getSortedData";
+import TableComp from "../components/Table/Table";
 
 export default connect(
   state => ({
@@ -8,5 +9,13 @@ export default connect(
     order: state.table.order,
     column: state.table.column
   }),
-  { setDataAsync }
+  {
+    setDataAsync,
+    setSort: column => (dispatch, getState) => {
+      dispatch(setSort(column));
+      const state = getState();
+      const sortedData = getSortedData(state);
+      dispatch(setData(sortedData));
+    }
+  }
 )(TableComp);

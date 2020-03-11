@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Table } from "semantic-ui-react";
-import "./index.css";
+import { Table, Dimmer, Loader } from "semantic-ui-react";
 import { isArrayValidForTable } from "../../utils/isArrayValidForTable";
+
+import "./index.css";
 
 export default class TableComp extends Component {
   componentDidMount() {
@@ -15,7 +16,19 @@ export default class TableComp extends Component {
           <Table.Header>
             <Table.Row>
               {Object.keys(this.props.data[0]).map(header => (
-                <Table.HeaderCell key={header}>{header}</Table.HeaderCell>
+                <Table.HeaderCell
+                  key={header}
+                  id={header}
+                  onClick={e => this.props.setSort(e.target.id)}
+                >
+                  {`${header} ${
+                    this.props.order && this.props.column === header
+                      ? this.props.order === "asc"
+                        ? "▼"
+                        : "▲"
+                      : ""
+                  }`}
+                </Table.HeaderCell>
               ))}
             </Table.Row>
           </Table.Header>
@@ -23,7 +36,7 @@ export default class TableComp extends Component {
             {this.props.data.map(row => (
               <Table.Row>
                 {Object.keys(this.props.data[0]).map(cell => (
-                  <Table.Cell>{row[cell]}</Table.Cell>
+                  <Table.Cell key={row[cell]}>{row[cell]}</Table.Cell>
                 ))}
               </Table.Row>
             ))}
@@ -33,7 +46,9 @@ export default class TableComp extends Component {
         <div>Загружаемый файл не валиден!</div>
       )
     ) : (
-      <div>Загрузка...</div>
+      <Dimmer page active>
+        <Loader />
+      </Dimmer>
     );
   }
 }

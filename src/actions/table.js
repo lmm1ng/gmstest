@@ -1,9 +1,14 @@
 import axios from "axios";
 
-const setData = array => ({
+export const setData = array => ({
   type: "SET_DATA",
   payload: array
 });
+
+export const setSort = string => ({
+    type: "SET_SORT",
+    payload: string
+  });
 
 export const setDataAsync = () => {
   return dispatch => {

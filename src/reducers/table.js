@@ -1,7 +1,7 @@
 const initialState = {
   data: [],
-  order: 'asc',
-  column: ''
+  order: "",
+  column: ""
 };
 
 export default (state = initialState, action) => {
@@ -11,6 +11,13 @@ export default (state = initialState, action) => {
         ...state,
         data: action.payload
       };
+    case "SET_SORT":
+      return state.column !== action.payload
+        ? { ...state, column: action.payload, order: "asc" }
+        : state.order === "asc"
+        ? { ...state, order: "desc" }
+        : { ...state, order: "asc" };
+
     default:
       return state;
   }
