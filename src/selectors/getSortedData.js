@@ -10,8 +10,8 @@ export const getSortedData = createSelector(
   (data, order, column) => {
     if (column && order) {
       return order === "asc"
-        ? R.sort(R.ascend(R.prop(column)), data)
-        : R.sort(R.descend(R.prop(column)), data);
+        ? R.sort(R.ascend(R.compose(R.toLower, R.prop(column))), data)
+        : R.sort(R.descend(R.compose(R.toLower, R.prop(column))), data)
     }
     return data;
   }

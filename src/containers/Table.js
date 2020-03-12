@@ -7,7 +7,9 @@ export default connect(
   state => ({
     data: state.table.data,
     order: state.table.order,
-    column: state.table.column
+    column: state.table.column,
+    page: state.pagination.page,
+    maxRowsOnPage: state.pagination.maxRowsOnPage
   }),
   {
     setDataAsync: () => async (dispatch, getState) => {
