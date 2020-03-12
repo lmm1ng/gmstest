@@ -10,7 +10,12 @@ export default connect(
     column: state.table.column
   }),
   {
-    setDataAsync,
+    setDataAsync: () => async (dispatch, getState) => {
+      await dispatch(setDataAsync());
+      const state = getState();
+      const sortedData = getSortedData(state);
+      dispatch(setData(sortedData));
+    },
     setSort: column => (dispatch, getState) => {
       dispatch(setSort(column));
       const state = getState();

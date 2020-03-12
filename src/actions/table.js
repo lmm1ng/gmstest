@@ -6,13 +6,13 @@ export const setData = array => ({
 });
 
 export const setSort = string => ({
-    type: "SET_SORT",
-    payload: string
-  });
+  type: "SET_SORT",
+  payload: string
+});
 
 export const setDataAsync = () => {
-  return dispatch => {
-    axios
+  return async dispatch => {
+    await axios
       .get(
         "https://raw.githubusercontent.com/blmzv/ah-frontend-intern/master/profiles.json"
       )
