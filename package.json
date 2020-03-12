@@ -1,8 +1,8 @@
 {
   "name": "gmstest",
-  "homepage": "http://lmm1ng.github.io/gmstest/",
   "version": "0.1.0",
   "private": false,
+  "homepage": "http://lmm1ng.github.io/gmstest/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
