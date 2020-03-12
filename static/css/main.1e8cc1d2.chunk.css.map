@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,OACI,eACJ,CAFA,YACG,iBAAkB,CAClB,QAAS,CACT,0BACH,CAJA,KACI,SAAU,CACV,aAAc,CACd,iBACJ","file":"main.1e8cc1d2.chunk.css","sourcesContent":["body {\n    width: 80%;\n    margin: 0 auto;\n    overflow-y: hidden;\n}"]}
