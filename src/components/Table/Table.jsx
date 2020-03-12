@@ -51,8 +51,8 @@ export default class TableComp extends Component {
                   this.props.maxRowsOnPage * (this.props.page - 1)
               )
 
-              .map(row => (
-                <Table.Row>
+              .map((row, i) => (
+                <Table.Row key={row + i}>
                   {Object.keys(this.props.data[0]).map(cell => (
                     <Table.Cell key={row[cell]}>{row[cell]}</Table.Cell>
                   ))}
